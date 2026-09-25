@@ -1,32 +1,53 @@
-import React from 'react';
-import { Globe } from 'lucide-react';
+import React from "react";
+
+const footerLinks = [
+  { label: "Languages", href: "#languages" },
+  { label: "How it works", href: "#how-it-works" },
+  { label: "Tutors", href: "#instructors" },
+  { label: "About", href: "#about" },
+];
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="border-t border-slate-900 py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
-        
-        {/* Brand */}
-        <div className="flex items-center gap-2">
-          <div className="w-7 h-7 rounded-lg bg-indigo-600 flex items-center justify-center text-white">
-            <Globe className="w-4 h-4" />
+    <footer className="border-t border-voka-border bg-white">
+      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+        <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
+          {/* Brand */}
+          <div>
+            <a
+              href="#"
+              className="text-2xl font-bold tracking-tight text-voka-green"
+              aria-label="Voka home"
+            >
+              Voka.
+            </a>
+
+            <p className="mt-2 text-sm text-voka-muted">
+              Learn the languages that bring you closer.
+            </p>
           </div>
-          <span className="text-lg font-bold text-white tracking-wide">
-            VOKA<span className="text-indigo-500">.</span>
-          </span>
+
+          {/* Navigation */}
+          <nav aria-label="Footer navigation">
+            <ul className="flex flex-wrap gap-x-6 gap-y-3">
+              {footerLinks.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    className="text-sm font-medium text-voka-muted hover:text-voka-green"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </div>
 
-        {/* Quick Links */}
-        <div className="flex items-center gap-6 text-sm text-slate-400">
-          <a href="#learn" className="hover:text-white transition-colors">Learn</a>
-          <a href="#instructors" className="hover:text-white transition-colors">For Instructors</a>
-          <a href="#about" className="hover:text-white transition-colors">About</a>
-          <a href="#waitlist" className="hover:text-white transition-colors">Waitlist</a>
-        </div>
+        <div className="mt-10 flex flex-col gap-3 border-t border-voka-border pt-6 text-xs text-voka-muted sm:flex-row sm:items-center sm:justify-between">
+          <p>© {new Date().getFullYear()} Voka. All rights reserved.</p>
 
-        {/* Copyright */}
-        <div className="text-xs text-slate-500">
-          &copy; {new Date().getFullYear()} VOKA. All rights reserved.
+          <p>Built for language, culture and connection.</p>
         </div>
       </div>
     </footer>

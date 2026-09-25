@@ -1,42 +1,90 @@
-import React from 'react';
-import { Users } from 'lucide-react';
+import React from "react";
+import { BadgeCheck, MessagesSquare, Users, ArrowRight } from "lucide-react";
+
+const benefits = [
+  {
+    icon: BadgeCheck,
+    title: "Native knowledge",
+    description:
+      "Learn pronunciation, expressions and context from people who understand how the language is actually spoken.",
+  },
+  {
+    icon: MessagesSquare,
+    title: "Real conversation",
+    description:
+      "Move beyond memorising words and build confidence through practical, human conversation.",
+  },
+  {
+    icon: Users,
+    title: "A place for instructors",
+    description:
+      "Voka is being designed to eventually connect learners with native speakers and language instructors.",
+  },
+];
 
 export const Instructors: React.FC = () => {
   return (
-    <section id="instructors" className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      <div className="bg-slate-900/60 border border-slate-800 rounded-3xl p-8 sm:p-12 md:p-16 text-center max-w-4xl mx-auto">
-        <div className="w-12 h-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 mx-auto mb-6">
-          <Users className="w-6 h-6" />
-        </div>
-
-        <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight font-['Plus_Jakarta_Sans']">
-          &ldquo;Learn from people who actually speak it.&rdquo;
-        </h2>
-
-        <p className="mt-6 text-lg text-slate-300 max-w-2xl mx-auto font-normal leading-relaxed">
-          Master real pronunciations, dialects, and cultural nuances directly from native speakers and passionate instructors across Nigeria.
-        </p>
-
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6 text-left">
-          <div className="bg-slate-950/60 border border-slate-800/80 p-5 rounded-2xl">
-            <h3 className="font-bold text-white text-base">Native Expertise</h3>
-            <p className="text-slate-400 text-xs mt-1.5 leading-relaxed">
-              Curated by fluent speakers who understand local nuance and natural dialogue.
+    <section id="instructors" className="bg-voka-cream py-20 sm:py-24 lg:py-28">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-20">
+          {/* Left */}
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-widest text-voka-orange">
+              Human learning
             </p>
+
+            <h2 className="mt-4 text-3xl font-bold tracking-tight text-voka-ink sm:text-4xl lg:text-5xl">
+              Learn with people who know the language{" "}
+              <span className="text-voka-green">beyond the textbook.</span>
+            </h2>
+
+            <p className="mt-6 max-w-xl text-lg leading-8 text-voka-muted">
+              Language carries tone, culture and context. As Voka grows, native
+              speakers and instructors will help learners understand the things
+              a translation alone cannot teach.
+            </p>
+
+            <a
+              href="#waitlist"
+              className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-voka-green hover:text-voka-green-dark"
+            >
+              Interested in teaching on Voka?
+              <ArrowRight className="h-4 w-4" />
+            </a>
           </div>
 
-          <div className="bg-slate-950/60 border border-slate-800/80 p-5 rounded-2xl">
-            <h3 className="font-bold text-white text-base">Interactive Guidance</h3>
-            <p className="text-slate-400 text-xs mt-1.5 leading-relaxed">
-              Receive feedback on voice pronunciation and conversational rhythm.
-            </p>
-          </div>
+          {/* Right */}
+          <div className="space-y-4">
+            {benefits.map((benefit, index) => {
+              const Icon = benefit.icon;
 
-          <div className="bg-slate-950/60 border border-slate-800/80 p-5 rounded-2xl">
-            <h3 className="font-bold text-white text-base">Community Connection</h3>
-            <p className="text-slate-400 text-xs mt-1.5 leading-relaxed">
-              Practice speaking in supportive cohorts led by experienced mentors.
-            </p>
+              return (
+                <article
+                  key={benefit.title}
+                  className="flex gap-5 rounded-3xl border border-voka-border bg-white p-6 sm:p-7"
+                >
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-voka-green-light">
+                    <Icon className="h-5 w-5 text-voka-green" />
+                  </div>
+
+                  <div>
+                    <div className="flex items-center gap-3">
+                      <span className="text-xs font-bold text-voka-orange">
+                        0{index + 1}
+                      </span>
+
+                      <h3 className="text-lg font-bold text-voka-ink">
+                        {benefit.title}
+                      </h3>
+                    </div>
+
+                    <p className="mt-2 leading-7 text-voka-muted">
+                      {benefit.description}
+                    </p>
+                  </div>
+                </article>
+              );
+            })}
           </div>
         </div>
       </div>

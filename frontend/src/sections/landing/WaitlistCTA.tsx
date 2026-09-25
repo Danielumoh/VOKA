@@ -1,53 +1,64 @@
-import React, { useState } from 'react';
-import { Sparkles, ArrowRight, CheckCircle2 } from 'lucide-react';
+import React from "react";
+import { ArrowRight, Mail } from "lucide-react";
 
 export const WaitlistCTA: React.FC = () => {
-  const [email, setEmail] = useState('');
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email.trim()) {
-      setSubmitted(true);
-      setEmail('');
-    }
-  };
-
   return (
-    <section id="waitlist" className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      <div className="bg-slate-900/80 border border-slate-800 rounded-3xl p-8 sm:p-14 text-center max-w-4xl mx-auto shadow-2xl relative overflow-hidden">
-        <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight font-['Plus_Jakarta_Sans']">
-          &ldquo;Be one of the first people to experience it.&rdquo;
-        </h2>
-        <p className="mt-4 text-slate-300 text-lg">
-          Join the waitlist today for early access and launch updates.
-        </p>
+    <section id="waitlist" className="bg-white py-20 sm:py-24 lg:py-28">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="relative overflow-hidden rounded-[2rem] bg-voka-cream px-6 py-14 sm:px-10 sm:py-16 lg:px-16 lg:py-20">
+          {/* Decorative shapes */}
+          <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-voka-green-light" />
+          <div className="absolute -bottom-20 -left-20 h-56 w-56 rounded-full bg-voka-orange-light/70" />
 
-        {submitted ? (
-          <div className="mt-8 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-semibold text-sm animate-in fade-in duration-200">
-            <CheckCircle2 className="w-5 h-5" />
-            <span>Thank you! You are on the waitlist.</span>
-          </div>
-        ) : (
-          <form onSubmit={handleSubmit} className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 max-w-md mx-auto">
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email address"
-              required
-              className="w-full px-5 py-3.5 rounded-full bg-slate-950 border border-slate-800 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm"
-            />
-            <button
-              type="submit"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-sm transition-colors shadow-lg shadow-indigo-600/20 whitespace-nowrap"
+          <div className="relative mx-auto max-w-3xl text-center">
+            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-voka-green-light">
+              <Mail className="h-5 w-5 text-voka-green" />
+            </div>
+
+            <p className="mt-6 text-sm font-semibold uppercase tracking-widest text-voka-orange">
+              Join the journey
+            </p>
+
+            <h2 className="mt-4 text-3xl font-bold tracking-tight text-voka-ink sm:text-4xl lg:text-5xl">
+              Be among the first to{" "}
+              <span className="text-voka-green">learn with Voka.</span>
+            </h2>
+
+            <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-voka-muted">
+              Voka is being built to make Nigerian languages easier to learn,
+              practise and carry into everyday life.
+            </p>
+
+            {/* Waitlist form */}
+            <form
+              className="mx-auto mt-9 flex max-w-xl flex-col gap-3 sm:flex-row"
+              onSubmit={(event) => event.preventDefault()}
             >
-              <Sparkles className="w-4 h-4 text-amber-300" />
-              <span>Join the Waitlist</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </form>
-        )}
+              <label htmlFor="waitlist-email" className="sr-only">
+                Email address
+              </label>
+
+              <input
+                id="waitlist-email"
+                type="email"
+                placeholder="Enter your email address"
+                className="min-w-0 flex-1 rounded-full border border-voka-border bg-white px-5 py-3.5 text-sm text-voka-ink outline-none placeholder:text-voka-muted focus:border-voka-green focus:ring-2 focus:ring-voka-green/10"
+              />
+
+              <button
+                type="submit"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-voka-green px-6 py-3.5 text-sm font-semibold text-white hover:bg-voka-green-dark"
+              >
+                Join waitlist
+                <ArrowRight className="h-4 w-4" />
+              </button>
+            </form>
+
+            <p className="mt-4 text-xs text-voka-muted">
+              Product updates only. No unnecessary noise.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
   );
