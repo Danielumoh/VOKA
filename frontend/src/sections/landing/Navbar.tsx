@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Menu, X, ChevronRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export const Navbar: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
@@ -23,10 +24,10 @@ export const Navbar: React.FC = () => {
   };
 
   const navLinks = [
-    { label: "Languages", href: "#languages" },
-    { label: "How it works", href: "#how-it-works" },
-    { label: "Tutors", href: "#instructors" },
-    { label: "About", href: "#about" },
+    { label: "Languages", href: "/#languages" },
+    { label: "How it works", href: "/#how-it-works" },
+    { label: "Tutors", href: "/#instructors" },
+    { label: "About", href: "/#about" },
   ];
 
   return (
@@ -40,13 +41,13 @@ export const Navbar: React.FC = () => {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between">
           {/* Brand */}
-          <a
-            href="#"
+          <Link
+            to="/"
             className="text-2xl font-bold tracking-tight text-voka-green"
             aria-label="Voka home"
           >
             Voka.
-          </a>
+          </Link>
 
           {/* Desktop navigation */}
           <nav
@@ -76,12 +77,12 @@ export const Navbar: React.FC = () => {
               Log in
             </a>
 
-            <a
-              href="#waitlist"
+            <Link
+              to="/learn"
               className="rounded-full bg-voka-green px-5 py-2.5 text-sm font-semibold text-white hover:bg-voka-green-dark"
             >
               Start learning
-            </a>
+            </Link>
           </div>
 
           {/* Mobile menu button */}
@@ -125,13 +126,13 @@ export const Navbar: React.FC = () => {
               </a>
             ))}
 
-            <a
-              href="#waitlist"
+            <Link
+              to="/learn"
               onClick={() => setIsMobileMenuOpen(false)}
               className="mt-3 flex w-full items-center justify-center rounded-xl bg-voka-green px-5 py-3 font-semibold text-white hover:bg-voka-green-dark"
             >
               Start learning
-            </a>
+            </Link>
           </div>
         </div>
       )}
