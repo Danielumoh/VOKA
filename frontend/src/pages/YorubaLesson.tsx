@@ -38,6 +38,9 @@ const YorubaLesson = () => {
   const [showFeedback, setShowFeedback] = useState(false);
   const [completed, setCompleted] = useState(false);
   const [score, setScore] = useState(0);
+  const [lessonStage, setLessonStage] = useState<"learning" | "quiz">(
+    "learning",
+  );
 
   const question = questions[currentIndex];
   const isCorrect = selectedAnswer === question.correctAnswer;
@@ -99,7 +102,25 @@ const YorubaLesson = () => {
             </p>
           </div>
 
-          {completed ? (
+          {lessonStage === "learning" ? (
+            <section className="mt-12 rounded-3xl border border-voka-border bg-white p-8 text-center">
+              <h2 className="text-4xl font-bold text-voka-green">Ẹ káàrọ̀</h2>
+
+              <p className="mt-4 text-xl font-semibold">Good morning</p>
+
+              <p className="mt-3 text-voka-muted">
+                A Yoruba greeting used in the morning.
+              </p>
+
+              <button
+                type="button"
+                onClick={() => setLessonStage("quiz")}
+                className="mt-8 rounded-full bg-voka-green px-6 py-3 font-semibold text-white"
+              >
+                Start Quiz
+              </button>
+            </section>
+          ) : completed ? (
             <section className="mt-12 rounded-3xl border border-voka-border bg-white p-8 text-center sm:p-12">
               <CheckCircle2 className="mx-auto h-14 w-14 text-voka-green" />
 
